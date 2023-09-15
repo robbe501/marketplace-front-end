@@ -1,0 +1,31 @@
+
+  <div key={content} class="group relative rounded-lg  overflow-hidden bg-white  hover:shadow-2xl ">
+
+    <div class="h-40">
+      <img
+        [src]="getImage()"
+        alt='City'
+        class="h-40 w-full object-cover object-center "/>
+    </div>
+    <div class="h-1/2 p-4 ">
+      <h3 class="mb-2 text-lg font-bold text-black">
+        <a href='' class="hover:underline">
+          {{name}}
+        </a>
+      </h3>
+      <p class="text-sm  text-black">{{description}}</p>
+      <p class="text-xs  text-black">{{material}}</p>
+      <div class='flex flex-row justify-between text-md mt-2'>
+        <p>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>(5/5)
+        </p>
+        <p>{{ price | currency:'EUR'}}</p>
+       </div>
+       <button *ngIf="!addedToCart" class="bg-[#cead6f] w-full py-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#917643] mt-3" (click)="addToCart()" >Aggiungi al carrello</button>
+       <button *ngIf="addedToCart" class=" w-full py-2 rounded-md text-white font-bold cursor-pointer bg-[#c77a59] mt-3" (click)="removeFromCart()">Rimuovi dal carrello</button>
+    </div>
+  </div>

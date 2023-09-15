@@ -1,0 +1,9 @@
+<div class="w-2/3 text-5xl text-center mx-auto mt-6 py-5 bg-[#cead6f] rounded-[1rem] shadow header-font text-white">Prodotti</div>
+<div class="w-2/3 mx-auto text-right pt-5">
+  <input class="rounded w-[30%] h-[50px] text-xl p-2" type="text" placeholder="Cerca" (keydown.enter)="find(textToFind.value)" #textToFind>
+</div>
+<div class='w-2/3 gap-6 grid grid-cols-3 mx-auto pt-7 pb-20'>
+  <ng-container *ngFor="let product of products">
+    <app-product [imageId]="product.image.imageId" [price]="product.prezzo" [id]="product.prodottoId" [material]="product.materiale" [description]="product.descrizione" [name]="product.nome"></app-product>
+  </ng-container>
+</div>

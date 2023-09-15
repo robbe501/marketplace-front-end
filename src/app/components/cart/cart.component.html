@@ -1,0 +1,34 @@
+
+
+<div class="w-2/3 text-5xl text-center mx-auto mt-6 py-5 bg-[#cead6f]  rounded-[1rem] shadow header-font text-white">Carrello</div>
+
+<div class=" pt-10 pb-10 mx-auto w-2/3">
+  <div class="mx-auto  justify-center px-6 md:flex md:space-x-6 xl:px-0">
+    <div class="rounded-lg md:w-2/3">
+      <ng-container *ngFor="let product of cartProducts">
+        <app-cart-product [price]="product.prezzo" [imageId]="product.image.imageId" [id]="product.prodottoId" [material]="product.materiale" [description]="product.descrizione" [name]="product.nome"></app-cart-product>
+      </ng-container>
+    </div>
+    <!-- Sub total -->
+    <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
+      <div class="mb-2 flex justify-between">
+        <p class="text-gray-700">Totale parziale</p>
+        <p class="text-gray-700">{{ partialTotal | currency:'EUR' }}</p>
+      </div>
+      <div class="flex justify-between">
+        <p class="text-gray-700">Spedizione</p>
+        <p class="text-gray-700">{{ shipping | currency:'EUR' }}</p>
+      </div>
+      <hr class="my-4" />
+      <div class="flex justify-between">
+        <p class="text-lg font-bold">Totale</p>
+        <div class="">
+          <p class="mb-1 text-lg font-bold">{{ total | currency:'EUR'}}</p>
+          <p class="text-sm text-gray-700">IVA Inclusa</p>
+        </div>
+      </div>
+      <button class="mt-6 w-full rounded-md bg-[#cead6f] py-1.5 font-medium text-white hover:bg-[#917643]">Check out</button>
+    </div>
+  </div>
+</div>
+
