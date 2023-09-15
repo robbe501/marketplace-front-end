@@ -53,7 +53,6 @@ export class CartComponent implements OnInit{
     if(index !== -1) {
       const x = cart.splice(index, 1);
       this.cookies.set('cart', JSON.stringify(cart));
-      console.log(this.cookies.get('cart'))
     }
   }
 }

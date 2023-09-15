@@ -1,12 +1,14 @@
 <div class="shadow bg-[#e9e9e9] text-[15pt]">
   <div class="w-2/3 h-16 mx-auto px-5 flex items-center justify-between">
-      <a class="text-2xl hover:text-white transition-colors cursor-pointer">Marketplace Artigiani</a>
+      <a class="text-2xl cursor-pointer" routerLink="">Marketplace Artigiani</a>
       <ul class="flex items-center gap-5">
         <li><a routerLink="" class="hover:text-white transition-colors hover:bg-[#5b5951] p-2 rounded-lg" href="">Home</a></li>
         <li><a routerLink="prodotti" class="hover:text-white transition-colors hover:bg-[#5b5951] p-2 rounded-lg" href="">Prodotti</a></li>
-        <li><a routerLink="accedi" class="hover:text-white transition-colors hover:bg-[#5b5951] p-2 rounded-lg" href="">Accedi</a></li>
-        <li><a routerLink="registrati" class="hover:text-white transition-colors hover:bg-[#5b5951] p-2 rounded-lg" href="">Registrati</a></li>
-        <li><a routerLink="inserisciProdotto" class="hover:text-white transition-colors hover:bg-[#5b5951] p-2 rounded-lg" href="">Inserisci Prodotto</a></li>
+        <li *ngIf="!isAuthenticated()"><a routerLink="accedi" class="hover:text-white transition-colors hover:bg-[#5b5951] p-2 rounded-lg" href="">Accedi</a></li>
+        <li *ngIf="!isAuthenticated()"><a routerLink="registrati" class="hover:text-white transition-colors hover:bg-[#5b5951] p-2 rounded-lg" href="">Registrati</a></li>
+        <li *ngIf="isAuthenticated()"><a routerLink="inserisciProdotto" class="hover:text-white transition-colors hover:bg-[#5b5951] p-2 rounded-lg" href="">Inserisci Prodotto</a></li>
+        <li *ngIf="isAuthenticated()"><a routerLink="mieiProdotti" class="hover:text-white transition-colors hover:bg-[#5b5951] p-2 rounded-lg" href="">I miei Prodotti</a></li>
+        <li *ngIf="isAuthenticated()"><a routerLink="accedi" (click)="logout()" class="hover:text-white transition-colors hover:bg-[#5b5951] p-2 rounded-lg" href="">Esci</a></li>
         <li><a routerLink="carrello" class="hover:text-white transition-colors p-2 rounded-lg" href="">
           <div class="flex min-h-screen items-center justify-center">
             <div class="relative scale-75">

@@ -15,11 +15,7 @@ export class PostProductComponent {
   constructor(private productService: ProductService) {}
 
   uploadImage(){
-    this.productService.uploadImage({
-      image: this.image!
-    }).subscribe((image) => {
-      this.imageId = image.imageId;
-    });
+
   }
 
   onFileSelected(event: any): void {
@@ -30,14 +26,18 @@ export class PostProductComponent {
   }
 
   postProduct(name: string, material: string, description: string, price: string) {
-    this.productService.postProduct({
-      nome: name,
-      materiale: material,
-      descrizione: description,
-      prezzo: parseFloat(price),
-      // TODO
-      utenteId: 1,
-      imageId: this.imageId
-    }).subscribe();
+    this.productService.uploadImage({
+      image: this.image!
+    }).subscribe((image) => {
+      this.productService.postProduct({
+        nome: name,
+        materiale: material,
+        descrizione: description,
+        prezzo: parseFloat(price),
+        // TODO
+        utenteId: 1,
+        imageId: image.imageId
+      }).subscribe();
+    });
   }
 }

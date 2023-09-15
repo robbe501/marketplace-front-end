@@ -41,15 +41,16 @@ export class ProductComponent implements OnInit{
   }
 
   getImage() {
-    return endpoint + "getImage/" + this.imageId;
+    if(this.imageId == 0 || this.imageId == undefined || this.imageId == null )
+      return "https://as1.ftcdn.net/v2/jpg/02/99/61/74/1000_F_299617487_fPJ8v9Onthhzwnp4ftILrtSGKs1JCrbh.jpg";
+    else
+      return endpoint + "getImage/" + this.imageId;
   }
-
   addToCart() {
     var cart = JSON.parse(this.cookies.get('cart') || '[]');
     cart.push(this.id);
     this.cookies.set('cart', JSON.stringify(cart));
     this.addedToCart = true;
-    console.log(this.cookies.get('cart'))
     this.cartService.emitAdd(this.id);
   }
 
@@ -59,7 +60,6 @@ export class ProductComponent implements OnInit{
     const x = cart.splice(index, 1);
     this.cookies.set('cart', JSON.stringify(cart));
     this.addedToCart = false;
-    console.log(this.cookies.get('cart'))
     this.cartService.emitRemove(this.id);
   }
 }

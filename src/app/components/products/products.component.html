@@ -1,9 +1,39 @@
-<div class="w-2/3 text-5xl text-center mx-auto mt-6 py-5 bg-[#cead6f] rounded-[1rem] shadow header-font text-white">Prodotti</div>
-<div class="w-2/3 mx-auto text-right pt-5">
-  <input class="rounded w-[30%] h-[50px] text-xl p-2" type="text" placeholder="Cerca" (keydown.enter)="find(textToFind.value)" #textToFind>
+
+<div class="w-2/3 grid grid-cols-3 mx-auto pt-10">
+  <div class="">
+    <app-header header="Prodotti"></app-header>
+  </div>
+  <div></div>
+
+
+  <div class="text-right">
+    <input class="rounded  h-[50px] text-xl p-2" type="text" placeholder="Cerca" (keydown.enter)="find(textToFind.value)" #textToFind>
+  </div>
 </div>
-<div class='w-2/3 gap-6 grid grid-cols-3 mx-auto pt-7 pb-20'>
+<div class='w-2/3 gap-6 grid grid-cols-3 mx-auto pt-7 pb-7'>
   <ng-container *ngFor="let product of products">
-    <app-product [imageId]="product.image.imageId" [price]="product.prezzo" [id]="product.prodottoId" [material]="product.materiale" [description]="product.descrizione" [name]="product.nome"></app-product>
+    <app-product [imageId]="product.imageId" [price]="product.prezzo" [id]="product.prodottoId" [material]="product.materiale" [description]="product.descrizione" [name]="product.nome"></app-product>
   </ng-container>
+
+</div>
+<div class="flex pb-20">
+  <div class="flex flex-row mx-auto">
+    <button (click)="prev()" type="button" class="bg-[#cead6f] text-white rounded-l-md border-r border-gray-100 py-2 hover:bg-[#917643] hover:text-white px-3">
+      <div class="flex flex-row align-middle">
+        <svg class="w-5 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
+        </svg>
+        <p class="">Prev</p>
+      </div>
+    </button>
+    <div class="bg-[#cead6f] text-lg text-white px-6 mx-1 flex justify-center items-center">{{page + 1}}</div>
+    <button (click)="next()" type="button" class="bg-[#cead6f] text-white rounded-r-md py-2 border-l border-gray-200 hover:bg-[#917643] hover:text-white px-3">
+      <div class="flex flex-row align-middle">
+        <span class="">Next</span>
+        <svg class="w-5 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        </svg>
+      </div>
+    </button>
+  </div>
 </div>

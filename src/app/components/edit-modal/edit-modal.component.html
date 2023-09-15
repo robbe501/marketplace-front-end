@@ -1,0 +1,32 @@
+
+  <div (click)="closeModalFromBg($event)" class=" z-50 overflow-y-hidden fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-screen w-screen flex items-center bg-opacity-60 bg-black" >
+    <div class="modal-bg z-[51] h-max mx-auto flex flex-col items-center" >
+
+      <div class="bg-white shadow-xl px-10 pt-6 pb-10 flex flex-col gap-4 text-sm rounded-2xl">
+        <p class="text-3xl mx-auto">Modifica il Prodotto</p>
+          <!-- <div>
+            <label class="text-gray-600 font-bold inline-block pb-2" for="immagine">Immagine</label>
+            <input class="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" type="file" name="immagine" accept="image/*">
+          </div> -->
+          <div>
+            <label class="text-gray-600 font-bold inline-block pb-2" for="nome">Nome del prodotto</label>
+            <input class="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" type="text" name="nome" placeholder="Tavolo" [value]="name" #nameForm>
+          </div>
+          <div>
+            <label class="text-gray-600 font-bold inline-block pb-2" for="materiale">Materiale</label>
+            <input class="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" type="text" name="materiale" placeholder="Legno di abete" [value]="material" #materialForm>
+          </div>
+          <div>
+            <label class="text-gray-600 font-bold inline-block pb-2" for="descrizione">Descrizione</label>
+            <input class="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" type="text" name="descrizione" placeholder="Tavolo 4 gambe marrone" [value]="description"  #descForm>
+          </div>
+          <div>
+              <label class="text-gray-600 font-bold inline-block pb-2" for="prezzo">Prezzo</label>
+              <input class="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" type="number" name="prezzo" placeholder="29.99" [value]="price"  #priceForm>
+          </div>
+          <div>
+              <button class="bg-[#cead6f] w-full py-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#917643]" (click)="onEdit(nameForm.value, materialForm.value, descForm.value, priceForm.value)">Modifica</button>
+          </div>
+      </div>
+    </div>
+  </div>

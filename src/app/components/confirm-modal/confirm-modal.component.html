@@ -1,0 +1,19 @@
+
+<div (click)="closeModalFromBg($event)" class=" z-50 overflow-y-hidden fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-screen w-screen flex items-center bg-opacity-60 bg-black" >
+  <div class="modal-bg z-[51] h-max mx-auto flex flex-col items-center" >
+
+    <div class="bg-white shadow-xl px-10 pt-6 pb-10 flex flex-col gap-4 text-sm rounded-2xl ">
+      <p class="text-3xl mx-auto ">Vuoi eliminare il prodotto?</p>
+      <div class="grid grid-cols-3  pt-3">
+
+        <div>
+          <button class="bg-[#cead6f] w-full py-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#917643]" (click)="closeModalEmitter()">Annulla</button>
+        </div>
+        <div></div>
+        <div>
+          <button class="bg-[#f45951] w-full py-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#f48051]" (click)="onDelete()">Conferma</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

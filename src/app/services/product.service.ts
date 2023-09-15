@@ -1,15 +1,17 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { endpoint } from '../config/endpoint.config';
 import { ImageReq } from '../models/immagine';
-import { PostProdottoReq, Prodotto } from '../models/prodotto';
+import { PostProdottoReq, Prodotto, PutProdottoReq } from '../models/prodotto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+
+  refresh: Subject<boolean> = new Subject<boolean>();
 
   constructor(private http: HttpClient, private cookies: CookieService) { }
 
@@ -41,11 +43,29 @@ export class ProductService {
     return this.http.post(endpoint + "postProdotto", product);
   }
 
-  getCartProducts() {
+  putProduct(product: PutProdottoReq) {
+    return this.http.patch(endpoint + "patchProdotto", product);
+  }
 
-    return this.http.post<Prodotto[]>(endpoint + "getProdottiById", {
-      prodottiCarrello: JSON.parse(this.cookies.get('cart') || '[]')
-    })
+  getCartProducts() {
+    let params = new HttpParams().set('prodottiCarrello', JSON.parse(this.cookies.get('cart') || '[]'))
+    return this.http.get<Prodotto[]>(endpoint + "getProdottiById", { params: params})
+  }
+
+  getUserProducts() {
+    return this.http.get<Prodotto[]>(endpoint + "getProdottiInVendita/" + this.cookies.get('userId'))
+  }
+
+  deleteProduct(id: number) {
+    return this.http.delete<Prodotto[]>(endpoint + "deleteProdotto/" + id)
+  }
+
+  get $refresh() {
+    return this.refresh as Observable<boolean>;
+  }
+
+  emitRefresh() {
+    this.refresh.next(true);
   }
 }
 

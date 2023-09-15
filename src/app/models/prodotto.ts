@@ -1,5 +1,3 @@
-import { Immagine } from "./immagine";
-import { Utente } from "./utente";
 
 export interface Prodotto {
   prodottoId: number;
@@ -8,8 +6,8 @@ export interface Prodotto {
   descrizione: string;
   prezzo: number;
   quantita: number;
-  utente: Utente;
-  image: Immagine;
+  utenteId: number;
+  imageId: number;
 }
 
 
@@ -22,4 +20,12 @@ export interface PostProdottoReq {
   prezzo: number;
   utenteId: number;
   imageId: number;
+}
+
+export interface PutProdottoReq {
+  prodottoId: number
+  nome: string;
+  materiale: string;
+  descrizione: string;
+  prezzo: number;
 }

@@ -1,12 +1,12 @@
-
-
-<div class="w-2/3 text-5xl text-center mx-auto mt-6 py-5 bg-[#cead6f]  rounded-[1rem] shadow header-font text-white">Carrello</div>
-
-<div class=" pt-10 pb-10 mx-auto w-2/3">
-  <div class="mx-auto  justify-center px-6 md:flex md:space-x-6 xl:px-0">
+<div class="pt-7 pl-1 pb-7 mx-auto w-2/3"><app-header  header="Carrello"></app-header></div>
+<div class="pb-10 mx-auto w-2/3">
+  <div class="mx-auto justify-center px-6 md:flex md:space-x-6 xl:px-0">
     <div class="rounded-lg md:w-2/3">
+      <div *ngIf="cartProducts.length == 0" class="pl-2 text-lg">
+        Aggiungi almeno un prodotto al carrello per continuare.
+      </div>
       <ng-container *ngFor="let product of cartProducts">
-        <app-cart-product [price]="product.prezzo" [imageId]="product.image.imageId" [id]="product.prodottoId" [material]="product.materiale" [description]="product.descrizione" [name]="product.nome"></app-cart-product>
+        <app-cart-product [price]="product.prezzo" [imageId]="product.imageId" [id]="product.prodottoId" [material]="product.materiale" [description]="product.descrizione" [name]="product.nome"></app-cart-product>
       </ng-container>
     </div>
     <!-- Sub total -->
@@ -19,15 +19,15 @@
         <p class="text-gray-700">Spedizione</p>
         <p class="text-gray-700">{{ shipping | currency:'EUR' }}</p>
       </div>
-      <hr class="my-4" />
+      <hr class="my-4"/>
       <div class="flex justify-between">
         <p class="text-lg font-bold">Totale</p>
         <div class="">
           <p class="mb-1 text-lg font-bold">{{ total | currency:'EUR'}}</p>
-          <p class="text-sm text-gray-700">IVA Inclusa</p>
+          <p class="text-sm bg- text-gray-700">IVA Inclusa</p>
         </div>
       </div>
-      <button class="mt-6 w-full rounded-md bg-[#cead6f] py-1.5 font-medium text-white hover:bg-[#917643]">Check out</button>
+      <button [ngClass]="{'bg-[#b6b5b5]': cartProducts.length == 0, 'bg-[#cead6f] hover:bg-[#917643]': cartProducts.length != 0}" class="mt-6 w-full rounded-md  py-1.5 font-medium text-white ">Check out</button>
     </div>
   </div>
 </div>

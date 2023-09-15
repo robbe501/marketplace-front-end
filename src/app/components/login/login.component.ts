@@ -25,8 +25,8 @@ export class LoginComponent {
       email: email,
       password: password
     }).subscribe((loginRes) => {
-      console.log(loginRes.token);
-      this.cookies.set("token", loginRes.token);
+      this.cookies.set("token", loginRes.token, new Date(new Date().getTime() + (1000 * 60 * 29)));
+      this.cookies.set("userId", "1", new Date(new Date().getTime() + (1000 * 60 * 29)));
       this.router.navigate(['prodotti']);
     })
   }

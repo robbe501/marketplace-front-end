@@ -16,6 +16,11 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductsComponent } from './components/products/products.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { UserProductsComponent } from './components/user-products/user-products.component';
+import { UserProductComponent } from './components/user-product/user-product.component';
+import { HeaderComponent } from './components/header/header.component';
+import { EditModalComponent } from './components/edit-modal/edit-modal.component';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +34,12 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
     CartComponent,
     CartProductComponent,
     FooterComponent,
-    PostProductComponent
+    PostProductComponent,
+    UserProductsComponent,
+    UserProductComponent,
+    HeaderComponent,
+    EditModalComponent,
+    ConfirmModalComponent
   ],
   imports: [
     BrowserModule,
