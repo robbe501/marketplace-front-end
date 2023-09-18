@@ -5,6 +5,7 @@ export interface LoginReq {
 
 export interface LoginRes {
   token: string;
+  userId: string;
 }
 
 export interface SignupReq {

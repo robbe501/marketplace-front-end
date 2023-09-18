@@ -23,6 +23,7 @@ export class ProductsComponent {
   }
 
   find(textToFind: string) {
+
     if(textToFind != "") {
       this.isSearching = true;
       this.productService.getProductsFiltered(textToFind).subscribe((products: Prodotto[]) => {
@@ -30,10 +31,12 @@ export class ProductsComponent {
       })
     }
     else {
+      console.log("aaaaaa");
       this.isSearching = false;
-      this.productService.getProducts().subscribe((products: Prodotto[]) => {
+      this.productService.getProductsWithOffsetAndLimit(this.page*this.nPerPage, this.nPerPage).subscribe((products: Prodotto[]) => {
         this.products = products;
         this.current = products.length;
+        this.page = 0;
       })
     }
   }

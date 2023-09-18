@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class PostProductComponent {
 
   imageId: number = -1;
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private cookies: CookieService) {}
 
   uploadImage(){
 
@@ -34,8 +35,7 @@ export class PostProductComponent {
         materiale: material,
         descrizione: description,
         prezzo: parseFloat(price),
-        // TODO
-        utenteId: 1,
+        utenteId: parseInt(this.cookies.get('userId')),
         imageId: image.imageId
       }).subscribe();
     });

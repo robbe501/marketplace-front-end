@@ -35,7 +35,7 @@ export class ProductComponent implements OnInit{
   }
 
   ngOnInit() {
-    let cart = JSON.parse(this.cookies.get('cart'));
+    let cart = JSON.parse(this.cookies.get('cart') || '[]');
     if (cart.includes(this.id))
       this.addedToCart = true;
   }

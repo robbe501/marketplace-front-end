@@ -1,5 +1,5 @@
 
-<div class="w-2/3 grid grid-cols-3 mx-auto pt-10">
+<div class="w-3/5 grid grid-cols-3 mx-auto pt-10">
   <div class="">
     <app-header header="Prodotti"></app-header>
   </div>
@@ -7,16 +7,18 @@
 
 
   <div class="text-right">
-    <input class="rounded  h-[50px] text-xl p-2" type="text" placeholder="Cerca" (keydown.enter)="find(textToFind.value)" #textToFind>
+    <span (click)="find(''); textToFind.value = ''"*ngIf="isSearching" class="font-bold text-xl h-full py-2 px-4 cursor-pointer text-white rounded-sm mr-2 bg-[#cead6f]">X</span>
+    <input class="rounded h-[50px] text-xl p-2" type="text" placeholder="Cerca" (keydown.enter)="find(textToFind.value)" #textToFind>
   </div>
+
 </div>
-<div class='w-2/3 gap-6 grid grid-cols-3 mx-auto pt-7 pb-7'>
+<div class='w-3/5 gap-6 grid grid-cols-3 mx-auto pt-7 pb-7'>
   <ng-container *ngFor="let product of products">
     <app-product [imageId]="product.imageId" [price]="product.prezzo" [id]="product.prodottoId" [material]="product.materiale" [description]="product.descrizione" [name]="product.nome"></app-product>
   </ng-container>
 
 </div>
-<div class="flex pb-20">
+<div *ngIf="!isSearching" class="flex pb-20">
   <div class="flex flex-row mx-auto">
     <button (click)="prev()" type="button" class="bg-[#cead6f] text-white rounded-l-md border-r border-gray-100 py-2 hover:bg-[#917643] hover:text-white px-3">
       <div class="flex flex-row align-middle">
