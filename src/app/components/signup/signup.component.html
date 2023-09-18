@@ -1,7 +1,7 @@
 <div class="pt-10 pb-10 w-screen flex items-center">
   <div class="h-max mx-auto flex flex-col items-center">
 
-      <div class="bg-white shadow-xl px-10 pt-6 pb-10 flex flex-col gap-4 text-sm rounded-2xl">
+      <div class="bg-white shadow-xl px-10 pt-6 pb-10 flex flex-col gap-4 text-sm rounded-2xl" (keydown.enter)="signup(nome.value, cognome.value, codiceFiscale.value, cellulare.value, residenza.value, email.value, password.value)">
         <p class="text-3xl mx-auto">Registrati</p>
           <div>
             <label class="text-gray-600 font-bold inline-block pb-2" for="nome">Nome</label>
@@ -33,7 +33,7 @@
           </div>
 
           <div>
-              <button class="bg-[#cead6f] w-full py-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#917643]" (click)="signup(nome.value, cognome.value, codiceFiscale.value, cellulare.value, residenza.value, email.value, password.value)">Registrati</button>
+              <button class="bg-[#cead6f] w-full py-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#917643]" (click)="signup(nome.value, cognome.value, codiceFiscale.value, cellulare.value, residenza.value, email.value, password.value)" >Registrati</button>
           </div>
       </div>
       <p class="text-sm text-gray-500 mt-10">Sei già registrato? <a href="accedi" class="text-[#cead6f] hover:text-[#917643] font-bold">Accedi!</a></p>
