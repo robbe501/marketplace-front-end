@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -13,7 +14,7 @@ export class PostProductComponent {
 
   imageId: number = -1;
 
-  constructor(private productService: ProductService, private cookies: CookieService) {}
+  constructor(private productService: ProductService, private cookies: CookieService, private router: Router) {}
 
   uploadImage(){
 
@@ -37,7 +38,7 @@ export class PostProductComponent {
         prezzo: parseFloat(price),
         utenteId: parseInt(this.cookies.get('userId')),
         imageId: image.imageId
-      }).subscribe();
+      }).subscribe(() => this.router.navigate(['mieiProdotti']));
     });
   }
 }
